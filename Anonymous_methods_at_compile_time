@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+
+namespace ConsoleApplicationtestingforeverything
+{
+	internal class Program
+	{
+    // this class is generated in compile time to assign and handle anonymous method 
+		[CompilerGenerated]
+		[Serializable]
+		private sealed class <>c
+		{
+			public static readonly Program.<>c <>9 = new Program.<>c();
+
+			public static Predicate<int> <>9__0_0;
+
+			internal bool <Main>b__0_0(int i)
+			{
+				return i % 2 == 0;
+			}
+		}
+
+		private static void Main(string[] args)
+		{
+			List<int> mylist = new List<int>
+			{
+				5,
+				15,
+				4,
+				20,
+				55,
+				100,
+				124,
+				256
+			};
+			List<int> arg_70_0 = mylist;
+			Predicate<int> arg_70_1;
+			if ((arg_70_1 = Program.<>c.<>9__0_0) == null)
+			{
+				arg_70_1 = (Program.<>c.<>9__0_0 = new Predicate<int>(Program.<>c.<>9.<Main>b__0_0));
+			}
+			List<int> filtered = arg_70_0.FindAll(arg_70_1);
+			foreach (int item in filtered)
+			{
+				Console.WriteLine(item);
+			}
+			Console.ReadLine();
+		}
+
+		private static bool IsEvenNumber(int a)
+		{
+			return a % 2 == 0;
+		}
+	}
+}
