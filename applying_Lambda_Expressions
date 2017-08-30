@@ -1,0 +1,48 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplicationtestingforeverything
+{
+
+    class Program
+    {
+
+
+        static void Main(string[] args)
+        {
+            List<int> mylist = new List<int>() { 5, 15, 4, 20, 55, 100, 124, 256 };
+            // 1. variant
+            List<int> filtered = mylist.FindAll(
+
+                delegate (int i)
+                {
+                    return i % 2 == 0;
+                }
+            );
+            /*2nd
+            Predicate<int> del = new Predicate<int>(IsEvenNumber);
+            List<int> filtered =  mylist.FindAll(IsEvenNumber);
+            */
+            //3nd List<int> filtered = mylist.FindAll(i => (i % 2) != 0);
+
+
+            foreach (int item in filtered)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.ReadLine();
+        }
+        static bool IsEvenNumber(int a)
+        {
+            if (a % 2 == 0)
+                return true;
+            else
+                return false;
+        }
+    }
+}
