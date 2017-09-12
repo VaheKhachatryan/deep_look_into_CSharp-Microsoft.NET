@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Reflection;
+using System.IO;
+using System.Numerics;
+
+namespace PracticeZone
+{
+    class Biggy
+    {
+        public static string AddingBigNumbers(string leftoperand, string rightoperand)
+        {
+            bool isDecimal = false;
+            string result = "";
+            for (int i = leftoperand.Length - 1; i >= 0; i--)
+            {
+                int leftOpDigit = Convert.ToByte(leftoperand.Substring(i, 1));
+                int rightOpDigit = Convert.ToByte(rightoperand.Substring(i, 1));
+                int sum = leftOpDigit + rightOpDigit;
+                sum += (isDecimal) ? 1: 0;
+                if (sum >= 10)
+                {
+                    isDecimal = true;
+                    sum -= 10;
+                }
+                result += sum.ToString();
+            }
+
+            if (isDecimal)
+            {
+                result = "1" + result;
+            }
+            return result;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string a = Biggy.AddingBigNumbers("455", "666");
+            Console.WriteLine(a);
+            Console.ReadLine();
+        }
+    }
+}
