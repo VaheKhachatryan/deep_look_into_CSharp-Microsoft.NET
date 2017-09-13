@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExternalAssemblyReflector
+{
+    class Program
+    {
+        static void DisplayTypesInAsm(Assembly asm)
+        {
+            Console.WriteLine("\n***** Types in Assembly *****\n");
+            Console.WriteLine("->{0}", asm.FullName);
+            Type[] types = asm.GetTypes();
+            foreach (Type t in types)
+            {
+                Console.WriteLine("Type: {0}", t.FullName);
+                
+            }
+            Console.WriteLine("\n");
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("***** External Assembly Viewer *****");
+            string asmName = "";
+            Assembly asm = null;
+            do
+            {
+                Console.WriteLine("\n Enter a name of Assembly to evaluate\n");
+                Console.Write("or Enter Q o quit from Program");
+                //Get name of assembly.
+                asmName = Console.ReadLine();
+                if (asmName.ToUpper() == "Q")
+                {
+                    break;
+                }
+                try
+                {
+                    asm = Assembly.Load(asmName);
+                    DisplayTypesInAsm(asm);
+                }
+                catch
+                {
+                    Console.WriteLine(value: "Sorry dear User the following assembly couldn't be found");
+                }
+            }
+            while (true);
+        }
+    }
+}
